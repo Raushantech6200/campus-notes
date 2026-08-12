@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Notes</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f8fc;
+    color:#17233b;
+}
+
+/* LOGIN */
+#loginPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#071b38,#1769e8);
+    padding:20px;
+}
+
+.login-box{
+    width:380px;
+    max-width:100%;
+    background:white;
+    padding:35px;
+    border-radius:16px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.login-box h1{
+    text-align:center;
+    margin-bottom:8px;
+}
+
+.login-box p{
+    text-align:center;
+    color:#777;
+    margin-bottom:25px;
+}
+
+.login-box label{
+    display:block;
+    font-weight:bold;
+    font-size:14px;
+    margin:12px 0 6px;
+}
+
+.login-box input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccd5e2;
+    border-radius:7px;
+}
+
+.login-btn{
+    width:100%;
+    padding:13px;
+    margin-top:20px;
+    background:#1769e8;
+    color:white;
+    border:0;
+    border-radius:7px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+/* HOME */
+#homePage{
+    display:none;
+}
+
+.navbar{
+    height:70px;
+    background:#071b38;
+    color:white;
+    display:flex;
+    align-items:center;
+    padding:0 5%;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#4d9aff;
+}
+
+.nav{
+    margin-left:auto;
+}
+
+.nav button{
+    background:none;
+    border:0;
+    color:white;
+    margin-left:20px;
+    cursor:pointer;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* HERO */
+.hero{
+    margin-top:30px;
+    padding:55px;
+    min-height:320px;
+    border-radius:16px;
+    background:linear-gradient(120deg,#eaf4ff,#d6e9ff);
+}
+
+.hero h1{
+    font-size:48px;
+    line-height:1.1;
+}
+
+.hero h1 span{
+    color:#1769e8;
+}
+
+.hero p{
+    margin-top:18px;
+    color:#536276;
+    max-width:500px;
+    line-height:1.6;
+}
+
+.buttons{
+    margin-top:25px;
+}
+
+.buttons button{
+    padding:13px 20px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.upload-main{
+    background:#1769e8;
+    color:white;
+    border:0;
+}
+
+.explore{
+    margin-left:8px;
+    background:white;
+    border:1px solid #ccd5e2;
+}
+
+/* SUBJECTS */
+.heading{
+    margin:35px 0 18px;
+}
+
+.subjects{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+}
+
+.subject{
+    background:white;
+    padding:20px;
+    border:1px solid #e1e7ef;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.subject:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.subject-icon{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.math{background:#2478df;}
+.chem{background:#35b879;}
+.electronic{background:#f0aa16;}
+.mechanical{background:#7650df;}
+.evs{background:#28a96b;}
+
+.subject h3{
+    font-size:16px;
+}
+
+.subject p{
+    color:#777;
+    font-size:12px;
+    margin-top:5px;
+}
+
+/* NOTES */
+.notes{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:40px;
+}
+
+.note{
+    background:white;
+    border:1px solid #e1e7ef;
+    padding:18px;
+    border-radius:10px;
+}
+
+.note h3{
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.note .subject-name{
+    color:#1769e8;
+    font-size:13px;
+}
+
+.note small{
+    display:block;
+    color:#777;
+    margin:12px 0;
+}
+
+.view{
+    background:#eaf3ff;
+    border:0;
+    color:#1769e8;
+    padding:8px 13px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.modal-box{
+    background:white;
+    width:430px;
+    max-width:100%;
+    padding:30px;
+    border-radius:15px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:15px;
+    top:10px;
+    border:0;
+    background:none;
+    font-size:27px;
+    cursor:pointer;
+}
+
+.modal-box h2{
+    margin-bottom:20px;
+}
+
+.modal-box input,
+.modal-box select{
+    width:100%;
+    padding:12px;
+    margin-bottom:13px;
+    border:1px solid #ccd5e2;
+    border-radius:7px;
+}
+
+.file-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.file-buttons button{
+    padding:13px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.camera{
+    background:#1769e8;
+    color:white;
+    border:0;
+}
+
+.pdf{
+    background:white;
+    color:#1769e8;
+    border:1px solid #1769e8;
+}
+
+#fileText{
+    color:#1769e8;
+    font-size:13px;
+    margin:12px 0;
+    word-break:break-word;
+}
+
+#preview{
+    width:100%;
+    max-height:180px;
+    object-fit:contain;
+    display:none;
+    margin-bottom:12px;
+    border-radius:7px;
+}
+
+.final-upload{
+    width:100%;
+    padding:13px;
+    background:#1769e8;
+    color:white;
+    border:0;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:5px;
+}
+
+/* SUBJECT PAGE */
+#subjectPage{
+    display:none;
+}
+
+.back{
+    margin-top:25px;
+    padding:10px 15px;
+    background:white;
+    border:1px solid #ccd5e2;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+#subjectPage h1{
+    margin:25px 0;
+}
+
+.empty{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    color:#777;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    .subjects{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .notes{
+        grid-template-columns:1fr;
+    }
+
+    .nav button{
+        margin-left:7px;
+    }
+
+    .hero{
+        padding:35px 25px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+}
+
+@media(max-width:500px){
+
+    .navbar{
+        padding:0 20px;
+    }
+
+    .nav{
+        display:none;
+    }
+
+    .subjects{
+        grid-template-columns:1fr;
+    }
+
+    .file-buttons{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <h1>Campus Notes</h1>
+
+        <p>Share Notes, Share Knowledge</p>
+
+        <form onsubmit="login(event)">
+
+            <label>Mobile Number</label>
+
+            <input
+                id="mobile"
+                type="tel"
+                maxlength="10"
+                placeholder="Enter mobile number"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <button class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- HOME PAGE -->
+
+<div id="homePage">
+
+<header class="navbar">
+
+    <div class="logo">
+        Campus <span>Notes</span>
+    </div>
+
+    <div class="nav">
+
+        <button onclick="home()">Home</button>
+
+        <button onclick="scrollSubjects()">
+            Notes
+        </button>
+
+        <button onclick="openUpload()">
+            Upload Notes
+        </button>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+<section class="hero">
+
+    <h1>
+        Share Notes,<br>
+        Share <span>Knowledge</span>
+    </h1>
+
+    <p>
+        Upload your college notes and help other
+        students find useful study material easily.
+    </p>
+
+    <div class="buttons">
+
+        <button
+            class="upload-main"
+            onclick="openUpload()"
+        >
+            Upload Notes
+        </button>
+
+        <button
+            class="explore"
+            onclick="scrollSubjects()"
+        >
+            Explore Notes
+        </button>
+
+    </div>
+
+</section>
+
+
+<h2 class="heading" id="subjectHeading">
+    Explore Subjects
+</h2>
+
+
+<div class="subjects">
+
+    <div
+        class="subject"
+        onclick="openSubject('Mathematics')"
+    >
+
+        <div class="subject-icon math">
+            M
+        </div>
+
+        <h3>Mathematics</h3>
+
+        <p id="mathCount">
+            0 Notes
+        </p>
+
+    </div>
+
+
+    <div
+        class="subject"
+        onclick="openSubject('Chemistry')"
+    >
+
+        <div class="subject-icon chem">
+            C
+        </div>
+
+        <h3>Chemistry</h3>
+
+        <p id="chemCount">
+            0 Notes
+        </p>
+
+    </div>
+
+
+    <div
+        class="subject"
+        onclick="openSubject('Electronic')"
+    >
+
+        <div class="subject-icon electronic">
+            E
+        </div>
+
+        <h3>Electronic</h3>
+
+        <p id="electronicCount">
+            0 Notes
+        </p>
+
+    </div>
+
+
+    <div
+        class="subject"
+        onclick="openSubject('Mechanical')"
+    >
+
+        <div class="subject-icon mechanical">
+            M
+        </div>
+
+        <h3>Mechanical</h3>
+
+        <p id="mechanicalCount">
+            0 Notes
+        </p>
+
+    </div>
+
+
+    <div
+        class="subject"
+        onclick="openSubject('EVS')"
+    >
+
+        <div class="subject-icon evs">
+            E
+        </div>
+
+        <h3>EVS</h3>
+
+        <p id="evsCount">
+            0 Notes
+        </p>
+
+    </div>
+
+</div>
+
+
+<h2 class="heading">
+    Latest Notes
+</h2>
+
+
+<div
+    class="notes"
+    id="latestNotes"
+>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SUBJECT PAGE -->
+
+<div id="subjectPage">
+
+    <div class="container">
+
+        <button
+            class="back"
+            onclick="home()"
+        >
+            ← Back
+        </button>
+
+        <h1 id="selectedSubject">
+            Mathematics Notes
+        </h1>
+
+        <div
+            class="notes"
+            id="subjectNotes"
+        >
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- UPLOAD MODAL -->
+
+<div
+    class="modal"
+    id="uploadModal"
+>
+
+<div class="modal-box">
+
+    <button
+        class="close"
+        onclick="closeUpload()"
+    >
+        ×
+    </button>
+
+    <h2>Upload Notes</h2>
+
+
+    <input
+        id="noteName"
+        type="text"
+        placeholder="Enter Note / File Name"
+    >
+
+
+    <select id="noteSubject">
+
+        <option value="">
+            Select Subject
+        </option>
+
+        <option value="Mathematics">
+            Mathematics
+        </option>
+
+        <option value="Chemistry">
+            Chemistry
+        </option>
+
+        <option value="Electronic">
+            Electronic
+        </option>
+
+        <option value="Mechanical">
+            Mechanical
+        </option>
+
+        <option value="EVS">
+            EVS
+        </option>
+
+    </select>
+
+
+    <div class="file-buttons">
+
+        <button
+            class="camera"
+            onclick="camera.click()"
+        >
+            Open Camera
+        </button>
+
+        <button
+            class="pdf"
+            onclick="pdf.click()"
+        >
+            Select PDF
+        </button>
+
+    </div>
+
+
+    <input
+        id="camera"
+        type="file"
+        accept="image/*"
+        capture="environment"
+        style="display:none"
+        onchange="fileSelected(this)"
+    >
+
+
+    <input
+        id="pdf"
+        type="file"
+        accept=".pdf,application/pdf"
+        style="display:none"
+        onchange="fileSelected(this)"
+    >
+
+
+    <div id="fileText"></div>
+
+    <img id="preview">
+
+
+    <button
+        class="final-upload"
+        onclick="uploadNote()"
+    >
+        Upload Note
+    </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* LOGIN */
+
+function login(event){
+
+    event.preventDefault();
+
+    let mobile =
+        document.getElementById("mobile").value;
+
+    let password =
+        document.getElementById("password").value;
+
+    if(mobile.length !== 10){
+
+        alert("Please enter 10 digit mobile number.");
+
+        return;
+    }
+
+    if(password.length < 4){
+
+        alert("Password minimum 4 characters hona chahiye.");
+
+        return;
+    }
+
+    document.getElementById("loginPage").style.display =
+        "none";
+
+    document.getElementById("homePage").style.display =
+        "block";
+
+    loadNotes();
+}
+
+
+/* OPEN UPLOAD */
+
+function openUpload(){
+
+    document.getElementById("uploadModal").style.display =
+        "flex";
+
+}
+
+
+/* CLOSE UPLOAD */
+
+function closeUpload(){
+
+    document.getElementById("uploadModal").style.display =
+        "none";
+
+}
+
+
+/* FILE SELECT */
+
+function fileSelected(input){
+
+    let file = input.files[0];
+
+    if(!file){
+        return;
+    }
+
+    document.getElementById("fileText").innerText =
+        "Selected: " + file.name;
+
+
+    if(file.type.startsWith("image/")){
+
+        let reader = new FileReader();
+
+        reader.onload = function(e){
+
+            document.getElementById("preview").src =
+                e.target.result;
+
+            document.getElementById("preview").style.display =
+                "block";
+
+        };
+
+        reader.readAsDataURL(file);
+
+    }else{
+
+        document.getElementById("preview").style.display =
+            "none";
+
+    }
+
+}
+
+
+/* UPLOAD */
+
+function uploadNote(){
+
+    let name =
+        document.getElementById("noteName").value.trim();
+
+    let subject =
+        document.getElementById("noteSubject").value;
+
+    let cameraFile =
+        document.getElementById("camera").files[0];
+
+    let pdfFile =
+        document.getElementById("pdf").files[0];
+
+    let file =
+        cameraFile || pdfFile;
+
+
+    if(name === ""){
+
+        alert("Please enter Note Name.");
+
+        return;
+    }
+
+
+    if(subject === ""){
+
+        alert("Please select Subject.");
+
+        return;
+    }
+
+
+    if(!file){
+
+        alert("Please select PDF or Camera photo.");
+
+        return;
+    }
+
+
+    let reader = new FileReader();
+
+
+    reader.onload = function(){
+
+        let notes =
+            JSON.parse(
+                localStorage.getItem("notes") || "[]"
+            );
+
+
+        let note = {
+
+            id:Date.now(),
+
+            name:name,
+
+            subject:subject,
+
+            fileName:file.name,
+
+            fileType:file.type,
+
+            fileData:reader.result
+
+        };
+
+
+        notes.push(note);
+
+
+        localStorage.setItem(
+            "notes",
+            JSON.stringify(notes)
+        );
+
+
+        alert(
+            "Note Upload Ho Gaya!\n\n" +
+            "Note: " + name +
+            "\nSubject: " + subject
+        );
+
+
+        document.getElementById("noteName").value = "";
+
+        document.getElementById("noteSubject").value = "";
+
+        document.getElementById("camera").value = "";
+
+        document.getElementById("pdf").value = "";
+
+        document.getElementById("fileText").innerText = "";
+
+        document.getElementById("preview").style.display =
+            "none";
+
+
+        closeUpload();
+
+        loadNotes();
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* LOAD NOTES */
+
+function loadNotes(){
+
+    let notes =
+        JSON.parse(
+            localStorage.getItem("notes") || "[]"
+        );
+
+
+    let box =
+        document.getElementById("latestNotes");
+
+
+    box.innerHTML = "";
+
+
+    if(notes.length === 0){
+
+        box.innerHTML =
+            '<div class="empty">Abhi koi note upload nahi hua.</div>';
+
+    }
+
+
+    notes.slice().reverse().forEach(function(note){
+
+        box.innerHTML += noteHTML(note);
+
+    });
+
+
+    updateCounts();
+
+}
+
+
+/* NOTE HTML */
+
+function noteHTML(note){
+
+    return `
+
+        <div class="note">
+
+            <h3>
+                ${safe(note.name)}
+            </h3>
+
+            <div class="subject-name">
+                ${safe(note.subject)}
+            </div>
+
+            <small>
+                File: ${safe(note.fileName)}
+            </small>
+
+            <button
+                class="view"
+                onclick="viewNote(${note.id})"
+            >
+                View Note
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* COUNTS */
+
+function updateCounts(){
+
+    let notes =
+        JSON.parse(
+            localStorage.getItem("notes") || "[]"
+        );
+
+
+    let subjects = [
+        "Mathematics",
+        "Chemistry",
+        "Electronic",
+        "Mechanical",
+        "EVS"
+    ];
+
+
+    subjects.forEach(function(subject){
+
+        let count =
+            notes.filter(
+                n => n.subject === subject
+            ).length;
+
+
+        let id = "";
+
+
+        if(subject === "Mathematics")
+            id = "mathCount";
+
+        if(subject === "Chemistry")
+            id = "chemCount";
+
+        if(subject === "Electronic")
+            id = "electronicCount";
+
+        if(subject === "Mechanical")
+            id = "mechanicalCount";
+
+        if(subject === "EVS")
+            id = "evsCount";
+
+
+        document.getElementById(id).innerText =
+            count + " Notes";
+
+    });
+
+}
+
+
+/* OPEN SUBJECT */
+
+function openSubject(subject){
+
+    document.getElementById("homePage").style.display =
+        "none";
+
+    document.getElementById("subjectPage").style.display =
+        "block";
+
+
+    document.getElementById("selectedSubject").innerText =
+        subject + " Notes";
+
+
+    let notes =
+        JSON.parse(
+            localStorage.getItem("notes") || "[]"
+        );
+
+
+    let filtered =
+        notes.filter(
+            n => n.subject === subject
+        );
+
+
+    let box =
+        document.getElementById("subjectNotes");
+
+
+    box.innerHTML = "";
+
+
+    if(filtered.length === 0){
+
+        box.innerHTML =
+            '<div class="empty">Is subject mein abhi koi notes nahi hain.</div>';
+
+        return;
+    }
+
+
+    filtered.slice().reverse().forEach(function(note){
+
+        box.innerHTML += noteHTML(note);
+
+    });
+
+}
+
+
+/* VIEW NOTE */
+
+function viewNote(id){
+
+    let notes =
+        JSON.parse(
+            localStorage.getItem("notes") || "[]"
+        );
+
+
+    let note =
+        notes.find(
+            n => n.id === id
+        );
+
+
+    if(!note){
+        alert("File nahi mili.");
+        return;
+    }
+
+
+    let win =
+        window.open();
+
+
+    if(note.fileType === "application/pdf"){
+
+        win.document.write(
+            `<iframe
+                src="${note.fileData}"
+                style="width:100%;height:100vh;border:0">
+             </iframe>`
+        );
+
+    }else{
+
+        win.document.write(
+            `<img
+                src="${note.fileData}"
+                style="max-width:100%;max-height:100vh;display:block;margin:auto">
+            `
+        );
+
+    }
+
+}
+
+
+/* HOME */
+
+function home(){
+
+    document.getElementById("subjectPage").style.display =
+        "none";
+
+    document.getElementById("homePage").style.display =
+        "block";
+
+    loadNotes();
+
+}
+
+
+/* SCROLL */
+
+function scrollSubjects(){
+
+    document
+        .getElementById("subjectHeading")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* SIMPLE HTML PROTECTION */
+
+function safe(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;");
+
+}
+
+</script>
+
+</body>
+</html>
