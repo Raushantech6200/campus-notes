@@ -3,647 +3,1585 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Campus Notes</title>
+
+<title>AIMT Notes Hub</title>
 
 <style>
+
+/* ================================
+   RESET
+================================ */
+
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#f5f8fc;
-    color:#17233b;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f7fb;
+    color:#10233f;
 }
 
-/* LOGIN */
+
+/* ================================
+   LOGIN PAGE
+================================ */
+
 #loginPage{
     min-height:100vh;
+    width:100%;
+
+    position:relative;
+
+    background-image:url("campus.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
     display:flex;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+
+/* Dark overlay */
+
+.campus-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3,20,45,.95) 0%,
+            rgba(3,28,60,.86) 38%,
+            rgba(3,28,60,.45) 65%,
+            rgba(3,20,45,.65) 100%
+        );
+
+    z-index:1;
+}
+
+
+/* Login content */
+
+.login-content{
+    width:100%;
+    min-height:100vh;
+
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:60px;
+
+    padding:50px 7%;
+}
+
+
+/* ================================
+   LEFT SIDE
+================================ */
+
+.welcome-section{
+    max-width:650px;
+    color:white;
+}
+
+
+.aimt-badge{
+    display:inline-block;
+
+    padding:10px 23px;
+
+    border-radius:7px;
+
+    background:#e50914;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+    margin-bottom:25px;
+
+    box-shadow:
+        0 8px 25px rgba(229,9,20,.35);
+}
+
+
+.welcome-section h1{
+    font-size:58px;
+
+    line-height:1.05;
+
+    letter-spacing:-2px;
+
+    margin-bottom:22px;
+}
+
+
+.welcome-section h1 span{
+    display:block;
+
+    color:#ff2638;
+
+    margin-top:5px;
+}
+
+
+.welcome-section p{
+    max-width:560px;
+
+    color:#e7edf6;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    margin-bottom:28px;
+}
+
+
+/* Features */
+
+.features{
+    display:flex;
+
+    gap:22px;
+
+    margin-top:25px;
+}
+
+
+.feature{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding-right:20px;
+
+    border-right:
+        1px solid rgba(255,255,255,.3);
+}
+
+
+.feature:last-child{
+    border-right:none;
+}
+
+
+.feature-icon{
+    width:43px;
+    height:43px;
+
+    border-radius:50%;
+
+    display:flex;
+
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#071b38,#1769e8);
-    padding:20px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    font-size:19px;
 }
 
-.login-box{
-    width:380px;
-    max-width:100%;
-    background:white;
-    padding:35px;
-    border-radius:16px;
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
-}
 
-.login-box h1{
-    text-align:center;
-    margin-bottom:8px;
-}
-
-.login-box p{
-    text-align:center;
-    color:#777;
-    margin-bottom:25px;
-}
-
-.login-box label{
+.feature b{
     display:block;
-    font-weight:bold;
-    font-size:14px;
-    margin:12px 0 6px;
+
+    font-size:12px;
+
+    margin-bottom:4px;
 }
 
-.login-box input{
-    width:100%;
-    padding:13px;
-    border:1px solid #ccd5e2;
-    border-radius:7px;
+
+.feature small{
+    color:#b9c7d9;
+
+    font-size:10px;
 }
 
-.login-btn{
-    width:100%;
-    padding:13px;
-    margin-top:20px;
-    background:#1769e8;
+
+.slogan{
+    margin-top:30px;
+
+    font-size:12px;
+
+    letter-spacing:4px;
+
+    color:#fff;
+
+    opacity:.8;
+}
+
+
+/* ================================
+   LOGIN CARD
+================================ */
+
+.login-card{
+    width:400px;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    background:
+        rgba(10,25,50,.67);
+
+    border:
+        1px solid rgba(255,255,255,.35);
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45);
+
     color:white;
-    border:0;
-    border-radius:7px;
-    font-size:16px;
-    font-weight:bold;
 }
 
-/* HOME */
+
+/* Logo */
+
+.login-logo{
+    width:55px;
+    height:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e50914,
+            #ff3345
+        );
+
+    font-size:25px;
+
+    margin-bottom:18px;
+}
+
+
+.login-card h2{
+    font-size:29px;
+
+    margin-bottom:7px;
+}
+
+
+.login-description{
+    color:#c0ccdc;
+
+    font-size:13px;
+
+    margin-bottom:27px;
+}
+
+
+/* Labels */
+
+.login-card label{
+    display:block;
+
+    color:#edf2f8;
+
+    font-size:12px;
+
+    margin-bottom:7px;
+}
+
+
+/* Input */
+
+.input-box{
+    width:100%;
+    height:51px;
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    padding:0 14px;
+
+    margin-bottom:18px;
+
+    border-radius:9px;
+
+    background:
+        rgba(255,255,255,.09);
+
+    border:
+        1px solid rgba(255,255,255,.23);
+
+    transition:.25s;
+}
+
+
+.input-box:focus-within{
+    border-color:#ff2638;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(255,38,56,.13);
+}
+
+
+.input-box span{
+    font-size:16px;
+}
+
+
+.input-box input{
+    width:100%;
+
+    border:none;
+    outline:none;
+
+    background:transparent;
+
+    color:white;
+
+    font-size:13px;
+}
+
+
+.input-box input::placeholder{
+    color:#9caabd;
+}
+
+
+/* Login button */
+
+.login-button{
+    width:100%;
+    height:52px;
+
+    border:none;
+
+    border-radius:9px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e50914,
+            #ff283b
+        );
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:5px;
+
+    transition:.25s;
+
+    box-shadow:
+        0 9px 25px
+        rgba(229,9,20,.30);
+}
+
+
+.login-button:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 13px 30px
+        rgba(229,9,20,.45);
+}
+
+
+.login-button span{
+    font-size:21px;
+}
+
+
+/* OR */
+
+.or-line{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:22px 0 18px;
+
+    color:#9eacbf;
+
+    font-size:10px;
+}
+
+
+.or-line span{
+    height:1px;
+
+    flex:1;
+
+    background:
+        rgba(255,255,255,.2);
+}
+
+
+.create-account{
+    text-align:center;
+
+    color:#bcc8d8;
+
+    font-size:11px;
+}
+
+
+.create-account a{
+    color:#ff3345;
+
+    font-weight:bold;
+
+    text-decoration:none;
+}
+
+
+/* ================================
+   HOME PAGE
+================================ */
+
 #homePage{
     display:none;
 }
 
+
+/* Navbar */
+
 .navbar{
     height:70px;
+
     background:#071b38;
+
     color:white;
+
     display:flex;
+
     align-items:center;
+
     padding:0 5%;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:50;
 }
+
 
 .logo{
     font-size:23px;
+
     font-weight:bold;
 }
 
+
 .logo span{
-    color:#4d9aff;
+    color:#4c96ff;
 }
+
 
 .nav{
     margin-left:auto;
 }
 
+
 .nav button{
-    background:none;
-    border:0;
+    border:none;
+
+    background:transparent;
+
     color:white;
-    margin-left:20px;
+
+    margin-left:25px;
+
+    font-weight:bold;
+
     cursor:pointer;
 }
 
+
+/* Main */
+
 .container{
     width:90%;
+
     max-width:1200px;
+
     margin:auto;
 }
 
-/* HERO */
+
+/* ================================
+   CAMPUS HERO
+================================ */
+
 .hero{
     margin-top:30px;
-    padding:55px;
-    min-height:320px;
-    border-radius:16px;
-    background:linear-gradient(120deg,#eaf4ff,#d6e9ff);
+
+    min-height:390px;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(4,27,57,.94),
+            rgba(4,45,90,.72),
+            rgba(4,45,90,.15)
+        ),
+        url("campus.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    display:flex;
+
+    align-items:center;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.15);
 }
+
+
+.hero-content{
+    padding:50px;
+
+    color:white;
+
+    max-width:650px;
+}
+
 
 .hero h1{
     font-size:48px;
+
     line-height:1.1;
 }
 
+
 .hero h1 span{
-    color:#1769e8;
+    color:#ff3345;
 }
+
 
 .hero p{
     margin-top:18px;
-    color:#536276;
-    max-width:500px;
-    line-height:1.6;
+
+    line-height:1.7;
+
+    color:#e9eff7;
+
+    max-width:520px;
 }
+
 
 .buttons{
     margin-top:25px;
 }
 
+
 .buttons button{
     padding:13px 20px;
+
     border-radius:7px;
+
     font-weight:bold;
+
     cursor:pointer;
 }
 
+
 .upload-main{
-    background:#1769e8;
+    background:#e50914;
+
     color:white;
-    border:0;
+
+    border:none;
 }
+
+
+.upload-main:hover{
+    background:#c90812;
+}
+
 
 .explore{
     margin-left:8px;
+
     background:white;
-    border:1px solid #ccd5e2;
+
+    color:#10233f;
+
+    border:1px solid white;
 }
 
-/* SUBJECTS */
+
+/* ================================
+   SUBJECTS
+================================ */
+
 .heading{
-    margin:35px 0 18px;
+    margin:38px 0 18px;
+
+    font-size:24px;
 }
+
 
 .subjects{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+
+    grid-template-columns:
+        repeat(5,1fr);
+
     gap:15px;
 }
 
+
 .subject{
     background:white;
+
     padding:20px;
-    border:1px solid #e1e7ef;
-    border-radius:10px;
+
+    border:1px solid #dfe6ef;
+
+    border-radius:11px;
+
     cursor:pointer;
-    transition:.2s;
+
+    transition:.25s;
 }
 
+
 .subject:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,.10);
 }
+
 
 .subject-icon{
     width:48px;
     height:48px;
-    border-radius:50%;
-    color:white;
+
     display:flex;
-    justify-content:center;
+
     align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    color:white;
+
     font-weight:bold;
+
     margin-bottom:12px;
 }
 
-.math{background:#2478df;}
-.chem{background:#35b879;}
-.electronic{background:#f0aa16;}
-.mechanical{background:#7650df;}
-.evs{background:#28a96b;}
+
+.math{
+    background:#287ce0;
+}
+
+
+.chem{
+    background:#31b779;
+}
+
+
+.electronic{
+    background:#efa914;
+}
+
+
+.mechanical{
+    background:#7550dd;
+}
+
+
+.evs{
+    background:#25a967;
+}
+
 
 .subject h3{
     font-size:16px;
 }
 
+
 .subject p{
     color:#777;
+
     font-size:12px;
+
     margin-top:5px;
 }
 
-/* NOTES */
+
+/* ================================
+   NOTES
+================================ */
+
 .notes{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:18px;
-    margin-bottom:40px;
+
+    margin-bottom:50px;
 }
+
 
 .note{
     background:white;
-    border:1px solid #e1e7ef;
-    padding:18px;
-    border-radius:10px;
+
+    border:1px solid #dfe6ef;
+
+    padding:20px;
+
+    border-radius:11px;
 }
+
 
 .note h3{
     font-size:16px;
+
     margin-bottom:8px;
 }
 
-.note .subject-name{
+
+.subject-name{
     color:#1769e8;
+
     font-size:13px;
 }
 
+
 .note small{
     display:block;
+
     color:#777;
+
     margin:12px 0;
 }
 
+
 .view{
-    background:#eaf3ff;
-    border:0;
-    color:#1769e8;
-    padding:8px 13px;
+    padding:8px 14px;
+
+    border:none;
+
     border-radius:6px;
+
+    background:#edf4ff;
+
+    color:#1769e8;
+
     cursor:pointer;
 }
 
-/* MODAL */
+
+.empty{
+    background:white;
+
+    padding:30px;
+
+    border-radius:10px;
+
+    color:#777;
+}
+
+
+/* ================================
+   UPLOAD MODAL
+================================ */
+
 .modal{
     display:none;
+
     position:fixed;
+
     inset:0;
-    background:rgba(0,0,0,.6);
-    justify-content:center;
+
+    z-index:100;
+
+    background:
+        rgba(0,0,0,.65);
+
     align-items:center;
+
+    justify-content:center;
+
     padding:20px;
 }
 
+
 .modal-box{
-    background:white;
     width:430px;
+
     max-width:100%;
+
+    background:white;
+
     padding:30px;
+
     border-radius:15px;
+
     position:relative;
 }
 
+
 .close{
     position:absolute;
+
     right:15px;
     top:10px;
-    border:0;
+
+    border:none;
+
     background:none;
-    font-size:27px;
+
+    font-size:28px;
+
     cursor:pointer;
 }
+
 
 .modal-box h2{
     margin-bottom:20px;
 }
 
+
 .modal-box input,
 .modal-box select{
     width:100%;
+
     padding:12px;
+
     margin-bottom:13px;
-    border:1px solid #ccd5e2;
+
+    border:
+        1px solid #ccd5e2;
+
     border-radius:7px;
 }
+
 
 .file-buttons{
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:10px;
 }
 
+
 .file-buttons button{
     padding:13px;
+
     border-radius:7px;
+
     cursor:pointer;
 }
+
 
 .camera{
     background:#1769e8;
+
     color:white;
-    border:0;
+
+    border:none;
 }
+
 
 .pdf{
     background:white;
+
     color:#1769e8;
-    border:1px solid #1769e8;
+
+    border:
+        1px solid #1769e8;
 }
+
 
 #fileText{
     color:#1769e8;
+
     font-size:13px;
+
     margin:12px 0;
+
     word-break:break-word;
 }
 
+
 #preview{
     width:100%;
+
     max-height:180px;
+
     object-fit:contain;
+
     display:none;
+
     margin-bottom:12px;
+
     border-radius:7px;
 }
+
 
 .final-upload{
     width:100%;
+
     padding:13px;
-    background:#1769e8;
+
+    background:#e50914;
+
     color:white;
-    border:0;
+
+    border:none;
+
     border-radius:7px;
+
     font-weight:bold;
+
     cursor:pointer;
-    margin-top:5px;
 }
 
-/* SUBJECT PAGE */
+
+/* ================================
+   SUBJECT PAGE
+================================ */
+
 #subjectPage{
     display:none;
 }
 
+
 .back{
     margin-top:25px;
+
     padding:10px 15px;
+
     background:white;
-    border:1px solid #ccd5e2;
+
+    border:
+        1px solid #ccd5e2;
+
     border-radius:7px;
+
     cursor:pointer;
 }
+
 
 #subjectPage h1{
     margin:25px 0;
 }
 
-.empty{
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    color:#777;
-}
 
-/* MOBILE */
-@media(max-width:800px){
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:900px){
+
+    .login-content{
+        gap:30px;
+
+        padding:35px;
+    }
+
+    .welcome-section h1{
+        font-size:43px;
+    }
+
+    .login-card{
+        width:360px;
+    }
 
     .subjects{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .notes{
-        grid-template-columns:1fr;
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
-    .nav button{
-        margin-left:7px;
+}
+
+
+@media(max-width:700px){
+
+    #loginPage{
+        overflow:auto;
+    }
+
+    .login-content{
+        flex-direction:column;
+
+        justify-content:center;
+
+        text-align:center;
+
+        padding:35px 20px;
+
+        gap:30px;
+    }
+
+    .welcome-section{
+        max-width:600px;
+    }
+
+    .welcome-section h1{
+        font-size:36px;
+    }
+
+    .welcome-section p{
+        font-size:14px;
+    }
+
+    .features{
+        justify-content:center;
+
+        flex-wrap:wrap;
+    }
+
+    .feature{
+        border:none;
+
+        padding:0;
+    }
+
+    .slogan{
+        margin-top:20px;
+    }
+
+    .login-card{
+        width:100%;
+
+        max-width:400px;
+
+        text-align:left;
     }
 
     .hero{
-        padding:35px 25px;
+        min-height:500px;
+    }
+
+    .hero-content{
+        padding:30px;
     }
 
     .hero h1{
         font-size:38px;
-    }
-}
-
-@media(max-width:500px){
-
-    .navbar{
-        padding:0 20px;
     }
 
     .nav{
         display:none;
     }
 
-    .subjects{
+}
+
+
+@media(max-width:500px){
+
+    .subjects,
+    .notes{
         grid-template-columns:1fr;
     }
 
     .file-buttons{
         grid-template-columns:1fr;
     }
+
+    .welcome-section h1{
+        font-size:31px;
+    }
+
+    .features{
+        display:none;
+    }
+
 }
+
 </style>
 </head>
+
 
 <body>
 
 
-<!-- LOGIN PAGE -->
+<!-- ==================================================
+     LOGIN PAGE
+================================================== -->
 
 <div id="loginPage">
 
-    <div class="login-box">
+    <div class="campus-overlay"></div>
 
-        <h1>Campus Notes</h1>
+    <div class="login-content">
 
-        <p>Share Notes, Share Knowledge</p>
 
-        <form onsubmit="login(event)">
+        <!-- LEFT -->
 
-            <label>Mobile Number</label>
+        <div class="welcome-section">
 
-            <input
-                id="mobile"
-                type="tel"
-                maxlength="10"
-                placeholder="Enter mobile number"
-                required
-            >
+            <div class="aimt-badge">
+                AIMT
+            </div>
 
-            <label>Password</label>
 
-            <input
-                id="password"
-                type="password"
-                placeholder="Enter password"
-                required
-            >
+            <h1>
+                Welcome to
+                <span>AIMT Notes Hub</span>
+            </h1>
 
-            <button class="login-btn">
-                Login
-            </button>
 
-        </form>
+            <p>
+                Your campus. Your resources. Your community.
+                Everything you need for your college journey,
+                all in one place.
+            </p>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        📚
+                    </div>
+
+                    <div>
+                        <b>Quality Notes</b>
+                        <small>Study Smarter</small>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        👥
+                    </div>
+
+                    <div>
+                        <b>Student Community</b>
+                        <small>Learn & Share</small>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🚀
+                    </div>
+
+                    <div>
+                        <b>Better Future</b>
+                        <small>Together We Grow</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="slogan">
+                LEARN • SHARE • GROW
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT LOGIN -->
+
+        <div class="login-card">
+
+
+            <div class="login-logo">
+                🎓
+            </div>
+
+
+            <h2>
+                Welcome Back 👋
+            </h2>
+
+
+            <p class="login-description">
+                Login to continue to your campus hub
+            </p>
+
+
+            <form onsubmit="login(event)">
+
+
+                <label>
+                    Mobile Number
+                </label>
+
+
+                <div class="input-box">
+
+                    <span>
+                        📱
+                    </span>
+
+                    <input
+                        id="mobile"
+                        type="tel"
+                        maxlength="10"
+                        placeholder="Enter your mobile number"
+                        required
+                    >
+
+                </div>
+
+
+                <label>
+                    Password
+                </label>
+
+
+                <div class="input-box">
+
+                    <span>
+                        🔒
+                    </span>
+
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    class="login-button"
+                    type="submit"
+                >
+
+                    Login
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+            </form>
+
+
+            <div class="or-line">
+
+                <span></span>
+
+                OR
+
+                <span></span>
+
+            </div>
+
+
+            <p class="create-account">
+
+                New to AIMT Campus Hub?
+
+                <a href="#">
+                    Create Account
+                </a>
+
+            </p>
+
+
+        </div>
 
     </div>
 
 </div>
 
 
-<!-- HOME PAGE -->
+
+<!-- ==================================================
+     HOME PAGE
+================================================== -->
 
 <div id="homePage">
 
-<header class="navbar">
 
-    <div class="logo">
-        Campus <span>Notes</span>
-    </div>
+    <header class="navbar">
 
-    <div class="nav">
-
-        <button onclick="home()">Home</button>
-
-        <button onclick="scrollSubjects()">
-            Notes
-        </button>
-
-        <button onclick="openUpload()">
-            Upload Notes
-        </button>
-
-    </div>
-
-</header>
+        <div class="logo">
+            AIMT <span>Notes Hub</span>
+        </div>
 
 
-<div class="container">
+        <div class="nav">
 
-<section class="hero">
+            <button onclick="home()">
+                Home
+            </button>
 
-    <h1>
-        Share Notes,<br>
-        Share <span>Knowledge</span>
-    </h1>
+            <button onclick="scrollSubjects()">
+                Notes
+            </button>
 
-    <p>
-        Upload your college notes and help other
-        students find useful study material easily.
-    </p>
+            <button onclick="openUpload()">
+                Upload Notes
+            </button>
 
-    <div class="buttons">
+        </div>
 
-        <button
-            class="upload-main"
-            onclick="openUpload()"
+    </header>
+
+
+    <div class="container">
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <h1>
+                    Share Notes,<br>
+                    Share <span>Knowledge</span>
+                </h1>
+
+
+                <p>
+                    Upload your college notes and help other
+                    students find useful study material easily.
+                </p>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="upload-main"
+                        onclick="openUpload()"
+                    >
+                        Upload Notes
+                    </button>
+
+
+                    <button
+                        class="explore"
+                        onclick="scrollSubjects()"
+                    >
+                        Explore Notes
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- SUBJECTS -->
+
+        <h2
+            class="heading"
+            id="subjectHeading"
         >
-            Upload Notes
-        </button>
-
-        <button
-            class="explore"
-            onclick="scrollSubjects()"
-        >
-            Explore Notes
-        </button>
-
-    </div>
-
-</section>
+            Explore Subjects
+        </h2>
 
 
-<h2 class="heading" id="subjectHeading">
-    Explore Subjects
-</h2>
+        <div class="subjects">
 
 
-<div class="subjects">
+            <div
+                class="subject"
+                onclick="openSubject('Mathematics')"
+            >
 
-    <div
-        class="subject"
-        onclick="openSubject('Mathematics')"
-    >
+                <div class="subject-icon math">
+                    M
+                </div>
 
-        <div class="subject-icon math">
-            M
+                <h3>
+                    Mathematics
+                </h3>
+
+                <p id="mathCount">
+                    0 Notes
+                </p>
+
+            </div>
+
+
+            <div
+                class="subject"
+                onclick="openSubject('Chemistry')"
+            >
+
+                <div class="subject-icon chem">
+                    C
+                </div>
+
+                <h3>
+                    Chemistry
+                </h3>
+
+                <p id="chemCount">
+                    0 Notes
+                </p>
+
+            </div>
+
+
+            <div
+                class="subject"
+                onclick="openSubject('Electronic')"
+            >
+
+                <div class="subject-icon electronic">
+                    E
+                </div>
+
+                <h3>
+                    Electronic
+                </h3>
+
+                <p id="electronicCount">
+                    0 Notes
+                </p>
+
+            </div>
+
+
+            <div
+                class="subject"
+                onclick="openSubject('Mechanical')"
+            >
+
+                <div class="subject-icon mechanical">
+                    M
+                </div>
+
+                <h3>
+                    Mechanical
+                </h3>
+
+                <p id="mechanicalCount">
+                    0 Notes
+                </p>
+
+            </div>
+
+
+            <div
+                class="subject"
+                onclick="openSubject('EVS')"
+            >
+
+                <div class="subject-icon evs">
+                    E
+                </div>
+
+                <h3>
+                    EVS
+                </h3>
+
+                <p id="evsCount">
+                    0 Notes
+                </p>
+
+            </div>
+
         </div>
 
-        <h3>Mathematics</h3>
-
-        <p id="mathCount">
-            0 Notes
-        </p>
-
-    </div>
 
 
-    <div
-        class="subject"
-        onclick="openSubject('Chemistry')"
-    >
+        <!-- LATEST NOTES -->
 
-        <div class="subject-icon chem">
-            C
-        </div>
-
-        <h3>Chemistry</h3>
-
-        <p id="chemCount">
-            0 Notes
-        </p>
-
-    </div>
+        <h2 class="heading">
+            Latest Notes
+        </h2>
 
 
-    <div
-        class="subject"
-        onclick="openSubject('Electronic')"
-    >
+        <div
+            class="notes"
+            id="latestNotes"
+        ></div>
 
-        <div class="subject-icon electronic">
-            E
-        </div>
-
-        <h3>Electronic</h3>
-
-        <p id="electronicCount">
-            0 Notes
-        </p>
-
-    </div>
-
-
-    <div
-        class="subject"
-        onclick="openSubject('Mechanical')"
-    >
-
-        <div class="subject-icon mechanical">
-            M
-        </div>
-
-        <h3>Mechanical</h3>
-
-        <p id="mechanicalCount">
-            0 Notes
-        </p>
-
-    </div>
-
-
-    <div
-        class="subject"
-        onclick="openSubject('EVS')"
-    >
-
-        <div class="subject-icon evs">
-            E
-        </div>
-
-        <h3>EVS</h3>
-
-        <p id="evsCount">
-            0 Notes
-        </p>
 
     </div>
 
 </div>
 
 
-<h2 class="heading">
-    Latest Notes
-</h2>
 
-
-<div
-    class="notes"
-    id="latestNotes"
->
-</div>
-
-</div>
-
-</div>
-
-
-<!-- SUBJECT PAGE -->
+<!-- ==================================================
+     SUBJECT PAGE
+================================================== -->
 
 <div id="subjectPage">
 
@@ -656,170 +1594,206 @@ body{
             ← Back
         </button>
 
+
         <h1 id="selectedSubject">
             Mathematics Notes
         </h1>
 
+
         <div
             class="notes"
             id="subjectNotes"
-        >
-        </div>
+        ></div>
 
     </div>
 
 </div>
 
 
-<!-- UPLOAD MODAL -->
+
+<!-- ==================================================
+     UPLOAD MODAL
+================================================== -->
 
 <div
     class="modal"
     id="uploadModal"
 >
 
-<div class="modal-box">
+    <div class="modal-box">
 
-    <button
-        class="close"
-        onclick="closeUpload()"
-    >
-        ×
-    </button>
-
-    <h2>Upload Notes</h2>
-
-
-    <input
-        id="noteName"
-        type="text"
-        placeholder="Enter Note / File Name"
-    >
-
-
-    <select id="noteSubject">
-
-        <option value="">
-            Select Subject
-        </option>
-
-        <option value="Mathematics">
-            Mathematics
-        </option>
-
-        <option value="Chemistry">
-            Chemistry
-        </option>
-
-        <option value="Electronic">
-            Electronic
-        </option>
-
-        <option value="Mechanical">
-            Mechanical
-        </option>
-
-        <option value="EVS">
-            EVS
-        </option>
-
-    </select>
-
-
-    <div class="file-buttons">
 
         <button
-            class="camera"
-            onclick="camera.click()"
+            class="close"
+            onclick="closeUpload()"
         >
-            Open Camera
+            ×
         </button>
 
-        <button
-            class="pdf"
-            onclick="pdf.click()"
+
+        <h2>
+            Upload Notes
+        </h2>
+
+
+        <input
+            id="noteName"
+            type="text"
+            placeholder="Enter Note / File Name"
         >
-            Select PDF
+
+
+        <select id="noteSubject">
+
+            <option value="">
+                Select Subject
+            </option>
+
+            <option>
+                Mathematics
+            </option>
+
+            <option>
+                Chemistry
+            </option>
+
+            <option>
+                Electronic
+            </option>
+
+            <option>
+                Mechanical
+            </option>
+
+            <option>
+                EVS
+            </option>
+
+        </select>
+
+
+        <div class="file-buttons">
+
+            <button
+                class="camera"
+                onclick="
+                document.getElementById('camera').click()
+                "
+            >
+                📷 Open Camera
+            </button>
+
+
+            <button
+                class="pdf"
+                onclick="
+                document.getElementById('pdf').click()
+                "
+            >
+                📄 Select PDF
+            </button>
+
+        </div>
+
+
+        <input
+            id="camera"
+            type="file"
+            accept="image/*"
+            capture="environment"
+            style="display:none"
+            onchange="fileSelected(this)"
+        >
+
+
+        <input
+            id="pdf"
+            type="file"
+            accept=".pdf,application/pdf"
+            style="display:none"
+            onchange="fileSelected(this)"
+        >
+
+
+        <div id="fileText"></div>
+
+
+        <img
+            id="preview"
+        >
+
+
+        <button
+            class="final-upload"
+            onclick="uploadNote()"
+        >
+            Upload Note
         </button>
+
 
     </div>
 
-
-    <input
-        id="camera"
-        type="file"
-        accept="image/*"
-        capture="environment"
-        style="display:none"
-        onchange="fileSelected(this)"
-    >
-
-
-    <input
-        id="pdf"
-        type="file"
-        accept=".pdf,application/pdf"
-        style="display:none"
-        onchange="fileSelected(this)"
-    >
-
-
-    <div id="fileText"></div>
-
-    <img id="preview">
-
-
-    <button
-        class="final-upload"
-        onclick="uploadNote()"
-    >
-        Upload Note
-    </button>
-
 </div>
 
-</div>
 
 
 <script>
 
-/* LOGIN */
+/* =========================
+   LOGIN
+========================= */
 
 function login(event){
 
     event.preventDefault();
 
-    let mobile =
-        document.getElementById("mobile").value;
 
-    let password =
+    const mobile =
+        document.getElementById("mobile").value.trim();
+
+
+    const password =
         document.getElementById("password").value;
 
-    if(mobile.length !== 10){
 
-        alert("Please enter 10 digit mobile number.");
+    if(!/^\d{10}$/.test(mobile)){
+
+        alert(
+            "Please enter a valid 10 digit mobile number."
+        );
 
         return;
+
     }
+
 
     if(password.length < 4){
 
-        alert("Password minimum 4 characters hona chahiye.");
+        alert(
+            "Password minimum 4 characters hona chahiye."
+        );
 
         return;
+
     }
+
 
     document.getElementById("loginPage").style.display =
         "none";
 
+
     document.getElementById("homePage").style.display =
         "block";
 
+
     loadNotes();
+
 }
 
 
-/* OPEN UPLOAD */
+/* =========================
+   OPEN UPLOAD
+========================= */
 
 function openUpload(){
 
@@ -829,8 +1803,6 @@ function openUpload(){
 }
 
 
-/* CLOSE UPLOAD */
-
 function closeUpload(){
 
     document.getElementById("uploadModal").style.display =
@@ -839,15 +1811,19 @@ function closeUpload(){
 }
 
 
-/* FILE SELECT */
+/* =========================
+   FILE SELECT
+========================= */
 
 function fileSelected(input){
 
-    let file = input.files[0];
+    const file = input.files[0];
+
 
     if(!file){
         return;
     }
+
 
     document.getElementById("fileText").innerText =
         "Selected: " + file.name;
@@ -855,21 +1831,31 @@ function fileSelected(input){
 
     if(file.type.startsWith("image/")){
 
-        let reader = new FileReader();
+        const reader =
+            new FileReader();
+
 
         reader.onload = function(e){
 
-            document.getElementById("preview").src =
+            const preview =
+                document.getElementById("preview");
+
+
+            preview.src =
                 e.target.result;
 
-            document.getElementById("preview").style.display =
+
+            preview.style.display =
                 "block";
 
         };
 
+
         reader.readAsDataURL(file);
 
-    }else{
+    }
+
+    else{
 
         document.getElementById("preview").style.display =
             "none";
@@ -879,39 +1865,47 @@ function fileSelected(input){
 }
 
 
-/* UPLOAD */
+/* =========================
+   UPLOAD NOTE
+========================= */
 
 function uploadNote(){
 
-    let name =
+    const name =
         document.getElementById("noteName").value.trim();
 
-    let subject =
+
+    const subject =
         document.getElementById("noteSubject").value;
 
-    let cameraFile =
+
+    const camera =
         document.getElementById("camera").files[0];
 
-    let pdfFile =
+
+    const pdf =
         document.getElementById("pdf").files[0];
 
-    let file =
-        cameraFile || pdfFile;
+
+    const file =
+        camera || pdf;
 
 
-    if(name === ""){
+    if(!name){
 
         alert("Please enter Note Name.");
 
         return;
+
     }
 
 
-    if(subject === ""){
+    if(!subject){
 
         alert("Please select Subject.");
 
         return;
+
     }
 
 
@@ -920,21 +1914,23 @@ function uploadNote(){
         alert("Please select PDF or Camera photo.");
 
         return;
+
     }
 
 
-    let reader = new FileReader();
+    const reader =
+        new FileReader();
 
 
     reader.onload = function(){
 
-        let notes =
+        const notes =
             JSON.parse(
                 localStorage.getItem("notes") || "[]"
             );
 
 
-        let note = {
+        notes.push({
 
             id:Date.now(),
 
@@ -948,10 +1944,7 @@ function uploadNote(){
 
             fileData:reader.result
 
-        };
-
-
-        notes.push(note);
+        });
 
 
         localStorage.setItem(
@@ -960,11 +1953,7 @@ function uploadNote(){
         );
 
 
-        alert(
-            "Note Upload Ho Gaya!\n\n" +
-            "Note: " + name +
-            "\nSubject: " + subject
-        );
+        alert("Note successfully uploaded!");
 
 
         document.getElementById("noteName").value = "";
@@ -993,17 +1982,19 @@ function uploadNote(){
 }
 
 
-/* LOAD NOTES */
+/* =========================
+   LOAD NOTES
+========================= */
 
 function loadNotes(){
 
-    let notes =
+    const notes =
         JSON.parse(
             localStorage.getItem("notes") || "[]"
         );
 
 
-    let box =
+    const box =
         document.getElementById("latestNotes");
 
 
@@ -1018,11 +2009,14 @@ function loadNotes(){
     }
 
 
-    notes.slice().reverse().forEach(function(note){
+    notes
+        .slice()
+        .reverse()
+        .forEach(function(note){
 
-        box.innerHTML += noteHTML(note);
+            box.innerHTML += noteHTML(note);
 
-    });
+        });
 
 
     updateCounts();
@@ -1030,7 +2024,9 @@ function loadNotes(){
 }
 
 
-/* NOTE HTML */
+/* =========================
+   NOTE HTML
+========================= */
 
 function noteHTML(note){
 
@@ -1064,53 +2060,45 @@ function noteHTML(note){
 }
 
 
-/* COUNTS */
+/* =========================
+   UPDATE COUNTS
+========================= */
 
 function updateCounts(){
 
-    let notes =
+    const notes =
         JSON.parse(
             localStorage.getItem("notes") || "[]"
         );
 
 
-    let subjects = [
-        "Mathematics",
-        "Chemistry",
-        "Electronic",
-        "Mechanical",
-        "EVS"
-    ];
+    const subjects = {
+
+        Mathematics:"mathCount",
+
+        Chemistry:"chemCount",
+
+        Electronic:"electronicCount",
+
+        Mechanical:"mechanicalCount",
+
+        EVS:"evsCount"
+
+    };
 
 
-    subjects.forEach(function(subject){
+    Object.keys(subjects).forEach(function(subject){
 
-        let count =
+        const count =
             notes.filter(
-                n => n.subject === subject
+                note =>
+                note.subject === subject
             ).length;
 
 
-        let id = "";
-
-
-        if(subject === "Mathematics")
-            id = "mathCount";
-
-        if(subject === "Chemistry")
-            id = "chemCount";
-
-        if(subject === "Electronic")
-            id = "electronicCount";
-
-        if(subject === "Mechanical")
-            id = "mechanicalCount";
-
-        if(subject === "EVS")
-            id = "evsCount";
-
-
-        document.getElementById(id).innerText =
+        document.getElementById(
+            subjects[subject]
+        ).innerText =
             count + " Notes";
 
     });
@@ -1118,12 +2106,15 @@ function updateCounts(){
 }
 
 
-/* OPEN SUBJECT */
+/* =========================
+   SUBJECT PAGE
+========================= */
 
 function openSubject(subject){
 
     document.getElementById("homePage").style.display =
         "none";
+
 
     document.getElementById("subjectPage").style.display =
         "block";
@@ -1133,19 +2124,20 @@ function openSubject(subject){
         subject + " Notes";
 
 
-    let notes =
+    const notes =
         JSON.parse(
             localStorage.getItem("notes") || "[]"
         );
 
 
-    let filtered =
+    const filtered =
         notes.filter(
-            n => n.subject === subject
+            note =>
+            note.subject === subject
         );
 
 
-    let box =
+    const box =
         document.getElementById("subjectNotes");
 
 
@@ -1158,83 +2150,114 @@ function openSubject(subject){
             '<div class="empty">Is subject mein abhi koi notes nahi hain.</div>';
 
         return;
+
     }
 
 
-    filtered.slice().reverse().forEach(function(note){
+    filtered
+        .slice()
+        .reverse()
+        .forEach(function(note){
 
-        box.innerHTML += noteHTML(note);
+            box.innerHTML += noteHTML(note);
 
-    });
+        });
 
 }
 
 
-/* VIEW NOTE */
+/* =========================
+   VIEW NOTE
+========================= */
 
 function viewNote(id){
 
-    let notes =
+    const notes =
         JSON.parse(
             localStorage.getItem("notes") || "[]"
         );
 
 
-    let note =
+    const note =
         notes.find(
-            n => n.id === id
+            n =>
+            n.id === id
         );
 
 
     if(!note){
+
         alert("File nahi mili.");
+
         return;
+
     }
 
 
-    let win =
+    const win =
         window.open();
 
 
     if(note.fileType === "application/pdf"){
 
-        win.document.write(
-            `<iframe
-                src="${note.fileData}"
-                style="width:100%;height:100vh;border:0">
-             </iframe>`
-        );
+        win.document.write(`
 
-    }else{
-
-        win.document.write(
-            `<img
+            <iframe
                 src="${note.fileData}"
-                style="max-width:100%;max-height:100vh;display:block;margin:auto">
-            `
-        );
+                style="
+                    width:100%;
+                    height:100vh;
+                    border:0;
+                "
+            ></iframe>
+
+        `);
+
+    }
+
+    else{
+
+        win.document.write(`
+
+            <img
+                src="${note.fileData}"
+                style="
+                    max-width:100%;
+                    max-height:100vh;
+                    display:block;
+                    margin:auto;
+                "
+            >
+
+        `);
 
     }
 
 }
 
 
-/* HOME */
+/* =========================
+   HOME
+========================= */
 
 function home(){
 
     document.getElementById("subjectPage").style.display =
         "none";
 
+
     document.getElementById("homePage").style.display =
         "block";
+
 
     loadNotes();
 
 }
 
 
-/* SCROLL */
+/* =========================
+   SCROLL
+========================= */
 
 function scrollSubjects(){
 
@@ -1247,7 +2270,9 @@ function scrollSubjects(){
 }
 
 
-/* SIMPLE HTML PROTECTION */
+/* =========================
+   SECURITY
+========================= */
 
 function safe(text){
 
