@@ -3,1194 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AIMT Notes Hub</title>
-
-<style>
-
-/* ================================
-   RESET
-================================ */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f7fb;
-    color:#10233f;
-}
-
-
-/* ================================
-   LOGIN PAGE
-================================ */
-
-#loginPage{
-    min-height:100vh;
-    width:100%;
-
-    position:relative;
-
-    background-image:url("campus.jpg");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-
-    display:flex;
-    align-items:center;
-
-    overflow:hidden;
-}
-
-
-/* Dark overlay */
-
-.campus-overlay{
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(3,20,45,.95) 0%,
-            rgba(3,28,60,.86) 38%,
-            rgba(3,28,60,.45) 65%,
-            rgba(3,20,45,.65) 100%
-        );
-
-    z-index:1;
-}
-
-
-/* Login content */
-
-.login-content{
-    width:100%;
-    min-height:100vh;
-
-    position:relative;
-    z-index:2;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:60px;
-
-    padding:50px 7%;
-}
-
-
-/* ================================
-   LEFT SIDE
-================================ */
-
-.welcome-section{
-    max-width:650px;
-    color:white;
-}
-
-
-.aimt-badge{
-    display:inline-block;
-
-    padding:10px 23px;
-
-    border-radius:7px;
-
-    background:#e50914;
-
-    color:white;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    letter-spacing:3px;
-
-    margin-bottom:25px;
-
-    box-shadow:
-        0 8px 25px rgba(229,9,20,.35);
-}
-
-
-.welcome-section h1{
-    font-size:58px;
-
-    line-height:1.05;
-
-    letter-spacing:-2px;
-
-    margin-bottom:22px;
-}
-
-
-.welcome-section h1 span{
-    display:block;
-
-    color:#ff2638;
-
-    margin-top:5px;
-}
-
-
-.welcome-section p{
-    max-width:560px;
-
-    color:#e7edf6;
-
-    font-size:16px;
-
-    line-height:1.7;
-
-    margin-bottom:28px;
-}
-
-
-/* Features */
-
-.features{
-    display:flex;
-
-    gap:22px;
-
-    margin-top:25px;
-}
-
-
-.feature{
-    display:flex;
-
-    align-items:center;
-
-    gap:9px;
-
-    padding-right:20px;
-
-    border-right:
-        1px solid rgba(255,255,255,.3);
-}
-
-
-.feature:last-child{
-    border-right:none;
-}
-
-
-.feature-icon{
-    width:43px;
-    height:43px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    background:
-        rgba(255,255,255,.12);
-
-    border:
-        1px solid rgba(255,255,255,.25);
-
-    font-size:19px;
-}
-
-
-.feature b{
-    display:block;
-
-    font-size:12px;
-
-    margin-bottom:4px;
-}
-
-
-.feature small{
-    color:#b9c7d9;
-
-    font-size:10px;
-}
-
-
-.slogan{
-    margin-top:30px;
-
-    font-size:12px;
-
-    letter-spacing:4px;
-
-    color:#fff;
-
-    opacity:.8;
-}
-
-
-/* ================================
-   LOGIN CARD
-================================ */
-
-.login-card{
-    width:400px;
-
-    padding:35px;
-
-    border-radius:20px;
-
-    background:
-        rgba(10,25,50,.67);
-
-    border:
-        1px solid rgba(255,255,255,.35);
-
-    backdrop-filter:blur(16px);
-
-    -webkit-backdrop-filter:blur(16px);
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,.45);
-
-    color:white;
-}
-
-
-/* Logo */
-
-.login-logo{
-    width:55px;
-    height:55px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e50914,
-            #ff3345
-        );
-
-    font-size:25px;
-
-    margin-bottom:18px;
-}
-
-
-.login-card h2{
-    font-size:29px;
-
-    margin-bottom:7px;
-}
-
-
-.login-description{
-    color:#c0ccdc;
-
-    font-size:13px;
-
-    margin-bottom:27px;
-}
-
-
-/* Labels */
-
-.login-card label{
-    display:block;
-
-    color:#edf2f8;
-
-    font-size:12px;
-
-    margin-bottom:7px;
-}
-
-
-/* Input */
-
-.input-box{
-    width:100%;
-    height:51px;
-
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    padding:0 14px;
-
-    margin-bottom:18px;
-
-    border-radius:9px;
-
-    background:
-        rgba(255,255,255,.09);
-
-    border:
-        1px solid rgba(255,255,255,.23);
-
-    transition:.25s;
-}
-
-
-.input-box:focus-within{
-    border-color:#ff2638;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(255,38,56,.13);
-}
-
-
-.input-box span{
-    font-size:16px;
-}
-
-
-.input-box input{
-    width:100%;
-
-    border:none;
-    outline:none;
-
-    background:transparent;
-
-    color:white;
-
-    font-size:13px;
-}
-
-
-.input-box input::placeholder{
-    color:#9caabd;
-}
-
-
-/* Login button */
-
-.login-button{
-    width:100%;
-    height:52px;
-
-    border:none;
-
-    border-radius:9px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #e50914,
-            #ff283b
-        );
-
-    color:white;
-
-    font-size:15px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-    margin-top:5px;
-
-    transition:.25s;
-
-    box-shadow:
-        0 9px 25px
-        rgba(229,9,20,.30);
-}
-
-
-.login-button:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 13px 30px
-        rgba(229,9,20,.45);
-}
-
-
-.login-button span{
-    font-size:21px;
-}
-
-
-/* OR */
-
-.or-line{
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    margin:22px 0 18px;
-
-    color:#9eacbf;
-
-    font-size:10px;
-}
-
-
-.or-line span{
-    height:1px;
-
-    flex:1;
-
-    background:
-        rgba(255,255,255,.2);
-}
-
-
-.create-account{
-    text-align:center;
-
-    color:#bcc8d8;
-
-    font-size:11px;
-}
-
-
-.create-account a{
-    color:#ff3345;
-
-    font-weight:bold;
-
-    text-decoration:none;
-}
-
-
-/* ================================
-   HOME PAGE
-================================ */
-
-#homePage{
-    display:none;
-}
-
-
-/* Navbar */
-
-.navbar{
-    height:70px;
-
-    background:#071b38;
-
-    color:white;
-
-    display:flex;
-
-    align-items:center;
-
-    padding:0 5%;
-
-    position:sticky;
-
-    top:0;
-
-    z-index:50;
-}
-
-
-.logo{
-    font-size:23px;
-
-    font-weight:bold;
-}
-
-
-.logo span{
-    color:#4c96ff;
-}
-
-
-.nav{
-    margin-left:auto;
-}
-
-
-.nav button{
-    border:none;
-
-    background:transparent;
-
-    color:white;
-
-    margin-left:25px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-}
-
-
-/* Main */
-
-.container{
-    width:90%;
-
-    max-width:1200px;
-
-    margin:auto;
-}
-
-
-/* ================================
-   CAMPUS HERO
-================================ */
-
-.hero{
-    margin-top:30px;
-
-    min-height:390px;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    position:relative;
-
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(4,27,57,.94),
-            rgba(4,45,90,.72),
-            rgba(4,45,90,.15)
-        ),
-        url("campus.jpg");
-
-    background-size:cover;
-
-    background-position:center;
-
-    display:flex;
-
-    align-items:center;
-
-    box-shadow:
-        0 12px 35px
-        rgba(0,0,0,.15);
-}
-
-
-.hero-content{
-    padding:50px;
-
-    color:white;
-
-    max-width:650px;
-}
-
-
-.hero h1{
-    font-size:48px;
-
-    line-height:1.1;
-}
-
-
-.hero h1 span{
-    color:#ff3345;
-}
-
-
-.hero p{
-    margin-top:18px;
-
-    line-height:1.7;
-
-    color:#e9eff7;
-
-    max-width:520px;
-}
-
-
-.buttons{
-    margin-top:25px;
-}
-
-
-.buttons button{
-    padding:13px 20px;
-
-    border-radius:7px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-}
-
-
-.upload-main{
-    background:#e50914;
-
-    color:white;
-
-    border:none;
-}
-
-
-.upload-main:hover{
-    background:#c90812;
-}
-
-
-.explore{
-    margin-left:8px;
-
-    background:white;
-
-    color:#10233f;
-
-    border:1px solid white;
-}
-
-
-/* ================================
-   SUBJECTS
-================================ */
-
-.heading{
-    margin:38px 0 18px;
-
-    font-size:24px;
-}
-
-
-.subjects{
-    display:grid;
-
-    grid-template-columns:
-        repeat(5,1fr);
-
-    gap:15px;
-}
-
-
-.subject{
-    background:white;
-
-    padding:20px;
-
-    border:1px solid #dfe6ef;
-
-    border-radius:11px;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-
-.subject:hover{
-    transform:translateY(-5px);
-
-    box-shadow:
-        0 10px 25px
-        rgba(0,0,0,.10);
-}
-
-
-.subject-icon{
-    width:48px;
-    height:48px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    color:white;
-
-    font-weight:bold;
-
-    margin-bottom:12px;
-}
-
-
-.math{
-    background:#287ce0;
-}
-
-
-.chem{
-    background:#31b779;
-}
-
-
-.electronic{
-    background:#efa914;
-}
-
-
-.mechanical{
-    background:#7550dd;
-}
-
-
-.evs{
-    background:#25a967;
-}
-
-
-.subject h3{
-    font-size:16px;
-}
-
-
-.subject p{
-    color:#777;
-
-    font-size:12px;
-
-    margin-top:5px;
-}
-
-
-/* ================================
-   NOTES
-================================ */
-
-.notes{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
-
-    margin-bottom:50px;
-}
-
-
-.note{
-    background:white;
-
-    border:1px solid #dfe6ef;
-
-    padding:20px;
-
-    border-radius:11px;
-}
-
-
-.note h3{
-    font-size:16px;
-
-    margin-bottom:8px;
-}
-
-
-.subject-name{
-    color:#1769e8;
-
-    font-size:13px;
-}
-
-
-.note small{
-    display:block;
-
-    color:#777;
-
-    margin:12px 0;
-}
-
-
-.view{
-    padding:8px 14px;
-
-    border:none;
-
-    border-radius:6px;
-
-    background:#edf4ff;
-
-    color:#1769e8;
-
-    cursor:pointer;
-}
-
-
-.empty{
-    background:white;
-
-    padding:30px;
-
-    border-radius:10px;
-
-    color:#777;
-}
-
-
-/* ================================
-   UPLOAD MODAL
-================================ */
-
-.modal{
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:100;
-
-    background:
-        rgba(0,0,0,.65);
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:20px;
-}
-
-
-.modal-box{
-    width:430px;
-
-    max-width:100%;
-
-    background:white;
-
-    padding:30px;
-
-    border-radius:15px;
-
-    position:relative;
-}
-
-
-.close{
-    position:absolute;
-
-    right:15px;
-    top:10px;
-
-    border:none;
-
-    background:none;
-
-    font-size:28px;
-
-    cursor:pointer;
-}
-
-
-.modal-box h2{
-    margin-bottom:20px;
-}
-
-
-.modal-box input,
-.modal-box select{
-    width:100%;
-
-    padding:12px;
-
-    margin-bottom:13px;
-
-    border:
-        1px solid #ccd5e2;
-
-    border-radius:7px;
-}
-
-
-.file-buttons{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:10px;
-}
-
-
-.file-buttons button{
-    padding:13px;
-
-    border-radius:7px;
-
-    cursor:pointer;
-}
-
-
-.camera{
-    background:#1769e8;
-
-    color:white;
-
-    border:none;
-}
-
-
-.pdf{
-    background:white;
-
-    color:#1769e8;
-
-    border:
-        1px solid #1769e8;
-}
-
-
-#fileText{
-    color:#1769e8;
-
-    font-size:13px;
-
-    margin:12px 0;
-
-    word-break:break-word;
-}
-
-
-#preview{
-    width:100%;
-
-    max-height:180px;
-
-    object-fit:contain;
-
-    display:none;
-
-    margin-bottom:12px;
-
-    border-radius:7px;
-}
-
-
-.final-upload{
-    width:100%;
-
-    padding:13px;
-
-    background:#e50914;
-
-    color:white;
-
-    border:none;
-
-    border-radius:7px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-}
-
-
-/* ================================
-   SUBJECT PAGE
-================================ */
-
-#subjectPage{
-    display:none;
-}
-
-
-.back{
-    margin-top:25px;
-
-    padding:10px 15px;
-
-    background:white;
-
-    border:
-        1px solid #ccd5e2;
-
-    border-radius:7px;
-
-    cursor:pointer;
-}
-
-
-#subjectPage h1{
-    margin:25px 0;
-}
-
-
-/* ================================
-   MOBILE
-================================ */
-
-@media(max-width:900px){
-
-    .login-content{
-        gap:30px;
-
-        padding:35px;
-    }
-
-    .welcome-section h1{
-        font-size:43px;
-    }
-
-    .login-card{
-        width:360px;
-    }
-
-    .subjects{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .notes{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-}
-
-
-@media(max-width:700px){
-
-    #loginPage{
-        overflow:auto;
-    }
-
-    .login-content{
-        flex-direction:column;
-
-        justify-content:center;
-
-        text-align:center;
-
-        padding:35px 20px;
-
-        gap:30px;
-    }
-
-    .welcome-section{
-        max-width:600px;
-    }
-
-    .welcome-section h1{
-        font-size:36px;
-    }
-
-    .welcome-section p{
-        font-size:14px;
-    }
-
-    .features{
-        justify-content:center;
-
-        flex-wrap:wrap;
-    }
-
-    .feature{
-        border:none;
-
-        padding:0;
-    }
-
-    .slogan{
-        margin-top:20px;
-    }
-
-    .login-card{
-        width:100%;
-
-        max-width:400px;
-
-        text-align:left;
-    }
-
-    .hero{
-        min-height:500px;
-    }
-
-    .hero-content{
-        padding:30px;
-    }
-
-    .hero h1{
-        font-size:38px;
-    }
-
-    .nav{
-        display:none;
-    }
-
-}
-
-
-@media(max-width:500px){
-
-    .subjects,
-    .notes{
-        grid-template-columns:1fr;
-    }
-
-    .file-buttons{
-        grid-template-columns:1fr;
-    }
-
-    .welcome-section h1{
-        font-size:31px;
-    }
-
-    .features{
-        display:none;
-    }
-
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
 
-
 <!-- ==================================================
-     LOGIN PAGE
+     LOGIN / REGISTER / OTP PAGE
 ================================================== -->
-
-<div id="loginPage">
-
-    <div class="campus-overlay"></div>
-
+<div id="loginPage" class="page">
     <div class="login-content">
 
-
         <!-- LEFT -->
-
         <div class="welcome-section">
+            <div class="aimt-badge">AIMT</div>
 
-            <div class="aimt-badge">
-                AIMT
-            </div>
-
-
-            <h1>
-                Welcome to
-                <span>AIMT Notes Hub</span>
-            </h1>
-
+            <h1>Welcome to <span>AIMT Notes Hub</span></h1>
 
             <p>
                 Your campus. Your resources. Your community.
@@ -1198,1093 +26,292 @@ body{
                 all in one place.
             </p>
 
-
             <div class="features">
-
                 <div class="feature">
-
-                    <div class="feature-icon">
-                        📚
-                    </div>
-
-                    <div>
-                        <b>Quality Notes</b>
-                        <small>Study Smarter</small>
-                    </div>
-
+                    <div class="feature-icon">📚</div>
+                    <div><b>Quality Notes</b><small>Study Smarter</small></div>
                 </div>
-
-
                 <div class="feature">
-
-                    <div class="feature-icon">
-                        👥
-                    </div>
-
-                    <div>
-                        <b>Student Community</b>
-                        <small>Learn & Share</small>
-                    </div>
-
+                    <div class="feature-icon">👥</div>
+                    <div><b>Student Community</b><small>Learn &amp; Share</small></div>
                 </div>
-
-
                 <div class="feature">
-
-                    <div class="feature-icon">
-                        🚀
-                    </div>
-
-                    <div>
-                        <b>Better Future</b>
-                        <small>Together We Grow</small>
-                    </div>
-
+                    <div class="feature-icon">🚀</div>
+                    <div><b>Better Future</b><small>Together We Grow</small></div>
                 </div>
-
             </div>
 
-
-            <div class="slogan">
-                LEARN • SHARE • GROW
-            </div>
-
+            <div class="slogan">LEARN • SHARE • GROW</div>
         </div>
 
-
-        <!-- RIGHT LOGIN -->
-
+        <!-- RIGHT CARD -->
         <div class="login-card">
 
+            <!-- ============ PANEL 1 : LOGIN ============ -->
+            <div id="loginPanel" class="panel">
+                <div class="login-logo">🎓</div>
+                <h2>Welcome Back 👋</h2>
+                <p class="login-description">Login to continue to your campus hub</p>
 
-            <div class="login-logo">
-                🎓
+                <form onsubmit="loginStep1(event)">
+                    <label for="loginUser">Username</label>
+                    <div class="input-box">
+                        <span>👤</span>
+                        <input id="loginUser" type="text" placeholder="Enter your username" autocomplete="username" required>
+                    </div>
+
+                    <label for="loginPass">Password</label>
+                    <div class="input-box">
+                        <span>🔒</span>
+                        <input id="loginPass" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+                    </div>
+
+                    <div class="form-error" id="loginError"></div>
+
+                    <button class="login-button" type="submit">Continue <span>→</span></button>
+                </form>
+
+                <div class="or-line"><span></span>OR<span></span></div>
+
+                <p class="create-account">
+                    New student?
+                    <a href="#" onclick="showPanel('registerPanel'); return false;">Register here</a>
+                </p>
             </div>
 
 
-            <h2>
-                Welcome Back 👋
-            </h2>
+            <!-- ============ PANEL 2 : REGISTER ============ -->
+            <div id="registerPanel" class="panel" style="display:none">
+                <div class="login-logo">📝</div>
+                <h2>Student Registration</h2>
+                <p class="login-description">Create your account to enter AIMT Notes Hub</p>
 
+                <form onsubmit="registerStudent(event)">
+                    <label for="regName">Full Name</label>
+                    <div class="input-box">
+                        <span>🧑‍🎓</span>
+                        <input id="regName" type="text" placeholder="Your full name" autocomplete="name" required>
+                    </div>
 
-            <p class="login-description">
-                Login to continue to your campus hub
-            </p>
+                    <label for="regMobile">Mobile Number</label>
+                    <div class="input-box">
+                        <span>📱</span>
+                        <input id="regMobile" type="tel" maxlength="10" placeholder="10 digit mobile number" autocomplete="tel" required>
+                    </div>
 
+                    <label for="regBranch">Your Branch</label>
+                    <div class="input-box">
+                        <span>🏫</span>
+                        <select id="regBranch" required></select>
+                    </div>
 
-            <form onsubmit="login(event)">
+                    <label for="regUser">Create Username</label>
+                    <div class="input-box">
+                        <span>👤</span>
+                        <input id="regUser" type="text" maxlength="20" placeholder="4-20 letters, numbers or _" autocomplete="username" required>
+                    </div>
 
+                    <label for="regPass">Create Password</label>
+                    <div class="input-box">
+                        <span>🔒</span>
+                        <input id="regPass" type="password" placeholder="Min 6 characters, letter + number" autocomplete="new-password" required>
+                    </div>
 
-                <label>
-                    Mobile Number
-                </label>
+                    <label for="regPass2">Confirm Password</label>
+                    <div class="input-box">
+                        <span>🔒</span>
+                        <input id="regPass2" type="password" placeholder="Type password again" autocomplete="new-password" required>
+                    </div>
 
+                    <div class="form-error" id="regError"></div>
 
-                <div class="input-box">
+                    <button class="login-button" type="submit">Create Account <span>→</span></button>
+                </form>
 
-                    <span>
-                        📱
-                    </span>
-
-                    <input
-                        id="mobile"
-                        type="tel"
-                        maxlength="10"
-                        placeholder="Enter your mobile number"
-                        required
-                    >
-
-                </div>
-
-
-                <label>
-                    Password
-                </label>
-
-
-                <div class="input-box">
-
-                    <span>
-                        🔒
-                    </span>
-
-                    <input
-                        id="password"
-                        type="password"
-                        placeholder="Enter your password"
-                        required
-                    >
-
-                </div>
-
-
-                <button
-                    class="login-button"
-                    type="submit"
-                >
-
-                    Login
-
-                    <span>
-                        →
-                    </span>
-
-                </button>
-
-
-            </form>
-
-
-            <div class="or-line">
-
-                <span></span>
-
-                OR
-
-                <span></span>
-
+                <p class="create-account" style="margin-top:18px">
+                    Already registered?
+                    <a href="#" onclick="showPanel('loginPanel'); return false;">Login</a>
+                </p>
             </div>
 
 
-            <p class="create-account">
+            <!-- ============ PANEL 3 : OTP (2-FACTOR) ============ -->
+            <div id="otpPanel" class="panel" style="display:none">
+                <div class="login-logo">🔐</div>
+                <h2>2-Step Verification</h2>
+                <p class="login-description" id="otpInfo">Enter the 6 digit OTP sent to your mobile</p>
 
-                New to AIMT Campus Hub?
+                <div class="otp-demo" id="otpDemo"></div>
 
-                <a href="#">
-                    Create Account
-                </a>
+                <form onsubmit="verifyOtp(event)">
+                    <label for="otpInput">6 Digit OTP</label>
+                    <div class="input-box">
+                        <span>🔢</span>
+                        <input id="otpInput" type="text" inputmode="numeric" maxlength="6" placeholder="Enter OTP" autocomplete="one-time-code" required>
+                    </div>
 
-            </p>
+                    <div class="form-error" id="otpError"></div>
 
+                    <button class="login-button" type="submit">Verify &amp; Enter <span>→</span></button>
+                </form>
+
+                <p class="create-account" style="margin-top:18px">
+                    <a href="#" id="resendLink" onclick="resendOtp(); return false;">Resend OTP</a>
+                    &nbsp;|&nbsp;
+                    <a href="#" onclick="cancelOtp(); return false;">Back to login</a>
+                </p>
+            </div>
 
         </div>
-
     </div>
-
 </div>
-
 
 
 <!-- ==================================================
      HOME PAGE
 ================================================== -->
-
-<div id="homePage">
-
+<div id="homePage" class="page" style="display:none">
 
     <header class="navbar">
-
-        <div class="logo">
-            AIMT <span>Notes Hub</span>
-        </div>
-
+        <div class="logo">AIMT <span>Notes Hub</span></div>
 
         <div class="nav">
-
-            <button onclick="home()">
-                Home
-            </button>
-
-            <button onclick="scrollSubjects()">
-                Notes
-            </button>
-
-            <button onclick="openUpload()">
-                Upload Notes
-            </button>
-
+            <button onclick="goHome()">Home</button>
+            <button onclick="scrollBranches()">Branches</button>
+            <button onclick="openUpload()">Upload Notes</button>
+            <span class="user-chip" id="userChip"></span>
+            <button class="logout" onclick="logout()">Logout</button>
         </div>
-
     </header>
-
 
     <div class="container">
 
-
         <!-- HERO -->
-
         <section class="hero">
-
             <div class="hero-content">
-
-                <h1>
-                    Share Notes,<br>
-                    Share <span>Knowledge</span>
-                </h1>
-
+                <h1>Share Notes,<br>Share <span>Knowledge</span></h1>
 
                 <p>
                     Upload your college notes and help other
                     students find useful study material easily.
                 </p>
 
-
                 <div class="buttons">
-
-                    <button
-                        class="upload-main"
-                        onclick="openUpload()"
-                    >
-                        Upload Notes
-                    </button>
-
-
-                    <button
-                        class="explore"
-                        onclick="scrollSubjects()"
-                    >
-                        Explore Notes
-                    </button>
-
+                    <button class="upload-main" onclick="openUpload()">Upload Notes</button>
+                    <button class="explore" onclick="scrollBranches()">Explore Notes</button>
                 </div>
-
             </div>
 
+            <div class="hero-logo">
+                <img src="logo.png" alt="AIMT Logo">
+            </div>
         </section>
 
-
-
-        <!-- SUBJECTS -->
-
-        <h2
-            class="heading"
-            id="subjectHeading"
-        >
-            Explore Subjects
-        </h2>
-
-
-        <div class="subjects">
-
-
-            <div
-                class="subject"
-                onclick="openSubject('Mathematics')"
-            >
-
-                <div class="subject-icon math">
-                    M
-                </div>
-
-                <h3>
-                    Mathematics
-                </h3>
-
-                <p id="mathCount">
-                    0 Notes
-                </p>
-
-            </div>
-
-
-            <div
-                class="subject"
-                onclick="openSubject('Chemistry')"
-            >
-
-                <div class="subject-icon chem">
-                    C
-                </div>
-
-                <h3>
-                    Chemistry
-                </h3>
-
-                <p id="chemCount">
-                    0 Notes
-                </p>
-
-            </div>
-
-
-            <div
-                class="subject"
-                onclick="openSubject('Electronic')"
-            >
-
-                <div class="subject-icon electronic">
-                    E
-                </div>
-
-                <h3>
-                    Electronic
-                </h3>
-
-                <p id="electronicCount">
-                    0 Notes
-                </p>
-
-            </div>
-
-
-            <div
-                class="subject"
-                onclick="openSubject('Mechanical')"
-            >
-
-                <div class="subject-icon mechanical">
-                    M
-                </div>
-
-                <h3>
-                    Mechanical
-                </h3>
-
-                <p id="mechanicalCount">
-                    0 Notes
-                </p>
-
-            </div>
-
-
-            <div
-                class="subject"
-                onclick="openSubject('EVS')"
-            >
-
-                <div class="subject-icon evs">
-                    E
-                </div>
-
-                <h3>
-                    EVS
-                </h3>
-
-                <p id="evsCount">
-                    0 Notes
-                </p>
-
-            </div>
-
-        </div>
-
-
+        <!-- BRANCHES -->
+        <h2 class="heading" id="branchHeading">B.Tech Branches</h2>
+        <div class="branches" id="branchGrid"></div>
 
         <!-- LATEST NOTES -->
-
-        <h2 class="heading">
-            Latest Notes
-        </h2>
-
-
-        <div
-            class="notes"
-            id="latestNotes"
-        ></div>
-
+        <h2 class="heading">Latest Notes</h2>
+        <div class="notes" id="latestNotes"></div>
 
     </div>
-
 </div>
-
 
 
 <!-- ==================================================
-     SUBJECT PAGE
+     BRANCH PAGE (subjects of one branch)
 ================================================== -->
+<div id="branchPage" class="page" style="display:none">
 
-<div id="subjectPage">
+    <header class="navbar">
+        <div class="logo">AIMT <span>Notes Hub</span></div>
+        <div class="nav">
+            <button onclick="goHome()">Home</button>
+            <button onclick="openUpload()">Upload Notes</button>
+            <span class="user-chip" id="userChip2"></span>
+            <button class="logout" onclick="logout()">Logout</button>
+        </div>
+    </header>
 
     <div class="container">
-
-        <button
-            class="back"
-            onclick="home()"
-        >
-            ← Back
-        </button>
-
-
-        <h1 id="selectedSubject">
-            Mathematics Notes
-        </h1>
-
-
-        <div
-            class="notes"
-            id="subjectNotes"
-        ></div>
-
+        <button class="back" onclick="goHome()">← Back</button>
+        <h1 class="page-title" id="branchTitle"></h1>
+        <div class="subjects" id="subjectGrid"></div>
     </div>
-
 </div>
 
+
+<!-- ==================================================
+     SUBJECT PAGE (notes of one subject)
+================================================== -->
+<div id="subjectPage" class="page" style="display:none">
+
+    <header class="navbar">
+        <div class="logo">AIMT <span>Notes Hub</span></div>
+        <div class="nav">
+            <button onclick="goHome()">Home</button>
+            <button onclick="openUpload()">Upload Notes</button>
+            <span class="user-chip" id="userChip3"></span>
+            <button class="logout" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <button class="back" onclick="goBackToBranch()">← Back</button>
+        <h1 class="page-title" id="subjectTitle"></h1>
+        <div class="notes" id="subjectNotes"></div>
+    </div>
+</div>
 
 
 <!-- ==================================================
      UPLOAD MODAL
 ================================================== -->
-
-<div
-    class="modal"
-    id="uploadModal"
->
-
+<div class="modal" id="uploadModal">
     <div class="modal-box">
 
+        <button class="close" onclick="closeUpload()">×</button>
+        <h2>Upload Notes</h2>
 
-        <button
-            class="close"
-            onclick="closeUpload()"
-        >
-            ×
-        </button>
+        <input id="noteName" type="text" placeholder="Note title (e.g. Unit 2 Handwritten Notes)">
 
+        <select id="noteBranch" onchange="fillSubjectSelect()"></select>
 
-        <h2>
-            Upload Notes
-        </h2>
+        <select id="noteSubject"></select>
 
+        <div class="two-col">
+            <input id="noteCourse" type="text" value="B.Tech" placeholder="Course">
+            <select id="noteSemester">
+                <option value="">Semester</option>
+                <option>Semester 1</option>
+                <option>Semester 2</option>
+                <option>Semester 3</option>
+                <option>Semester 4</option>
+                <option>Semester 5</option>
+                <option>Semester 6</option>
+                <option>Semester 7</option>
+                <option>Semester 8</option>
+            </select>
+        </div>
 
-        <input
-            id="noteName"
-            type="text"
-            placeholder="Enter Note / File Name"
-        >
-
-
-        <select id="noteSubject">
-
-            <option value="">
-                Select Subject
-            </option>
-
-            <option>
-                Mathematics
-            </option>
-
-            <option>
-                Chemistry
-            </option>
-
-            <option>
-                Electronic
-            </option>
-
-            <option>
-                Mechanical
-            </option>
-
-            <option>
-                EVS
-            </option>
-
-        </select>
-
+        <input id="noteUploader" type="text" placeholder="Your name">
 
         <div class="file-buttons">
-
-            <button
-                class="camera"
-                onclick="
-                document.getElementById('camera').click()
-                "
-            >
-                📷 Open Camera
-            </button>
-
-
-            <button
-                class="pdf"
-                onclick="
-                document.getElementById('pdf').click()
-                "
-            >
-                📄 Select PDF
-            </button>
-
+            <button class="camera" onclick="document.getElementById('camera').click()">📷 Open Camera</button>
+            <button class="pdf" onclick="document.getElementById('pdf').click()">📄 Select PDF</button>
         </div>
 
-
-        <input
-            id="camera"
-            type="file"
-            accept="image/*"
-            capture="environment"
-            style="display:none"
-            onchange="fileSelected(this)"
-        >
-
-
-        <input
-            id="pdf"
-            type="file"
-            accept=".pdf,application/pdf"
-            style="display:none"
-            onchange="fileSelected(this)"
-        >
-
+        <input id="camera" type="file" accept="image/*" capture="environment" style="display:none" onchange="fileSelected(this)">
+        <input id="pdf" type="file" accept=".pdf,application/pdf" style="display:none" onchange="fileSelected(this)">
 
         <div id="fileText"></div>
+        <img id="preview" alt="">
 
-
-        <img
-            id="preview"
-        >
-
-
-        <button
-            class="final-upload"
-            onclick="uploadNote()"
-        >
-            Upload Note
-        </button>
-
-
+        <button id="uploadBtn" class="final-upload" onclick="uploadNote()">Upload Note</button>
     </div>
-
 </div>
 
-
-
-<script>
-
-/* =========================
-   LOGIN
-========================= */
-
-function login(event){
-
-    event.preventDefault();
-
-
-    const mobile =
-        document.getElementById("mobile").value.trim();
-
-
-    const password =
-        document.getElementById("password").value;
-
-
-    if(!/^\d{10}$/.test(mobile)){
-
-        alert(
-            "Please enter a valid 10 digit mobile number."
-        );
-
-        return;
-
-    }
-
-
-    if(password.length < 4){
-
-        alert(
-            "Password minimum 4 characters hona chahiye."
-        );
-
-        return;
-
-    }
-
-
-    document.getElementById("loginPage").style.display =
-        "none";
-
-
-    document.getElementById("homePage").style.display =
-        "block";
-
-
-    loadNotes();
-
-}
-
-
-/* =========================
-   OPEN UPLOAD
-========================= */
-
-function openUpload(){
-
-    document.getElementById("uploadModal").style.display =
-        "flex";
-
-}
-
-
-function closeUpload(){
-
-    document.getElementById("uploadModal").style.display =
-        "none";
-
-}
-
-
-/* =========================
-   FILE SELECT
-========================= */
-
-function fileSelected(input){
-
-    const file = input.files[0];
-
-
-    if(!file){
-        return;
-    }
-
-
-    document.getElementById("fileText").innerText =
-        "Selected: " + file.name;
-
-
-    if(file.type.startsWith("image/")){
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload = function(e){
-
-            const preview =
-                document.getElementById("preview");
-
-
-            preview.src =
-                e.target.result;
-
-
-            preview.style.display =
-                "block";
-
-        };
-
-
-        reader.readAsDataURL(file);
-
-    }
-
-    else{
-
-        document.getElementById("preview").style.display =
-            "none";
-
-    }
-
-}
-
-
-/* =========================
-   UPLOAD NOTE
-========================= */
-
-function uploadNote(){
-
-    const name =
-        document.getElementById("noteName").value.trim();
-
-
-    const subject =
-        document.getElementById("noteSubject").value;
-
-
-    const camera =
-        document.getElementById("camera").files[0];
-
-
-    const pdf =
-        document.getElementById("pdf").files[0];
-
-
-    const file =
-        camera || pdf;
-
-
-    if(!name){
-
-        alert("Please enter Note Name.");
-
-        return;
-
-    }
-
-
-    if(!subject){
-
-        alert("Please select Subject.");
-
-        return;
-
-    }
-
-
-    if(!file){
-
-        alert("Please select PDF or Camera photo.");
-
-        return;
-
-    }
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload = function(){
-
-        const notes =
-            JSON.parse(
-                localStorage.getItem("notes") || "[]"
-            );
-
-
-        notes.push({
-
-            id:Date.now(),
-
-            name:name,
-
-            subject:subject,
-
-            fileName:file.name,
-
-            fileType:file.type,
-
-            fileData:reader.result
-
-        });
-
-
-        localStorage.setItem(
-            "notes",
-            JSON.stringify(notes)
-        );
-
-
-        alert("Note successfully uploaded!");
-
-
-        document.getElementById("noteName").value = "";
-
-        document.getElementById("noteSubject").value = "";
-
-        document.getElementById("camera").value = "";
-
-        document.getElementById("pdf").value = "";
-
-        document.getElementById("fileText").innerText = "";
-
-        document.getElementById("preview").style.display =
-            "none";
-
-
-        closeUpload();
-
-        loadNotes();
-
-    };
-
-
-    reader.readAsDataURL(file);
-
-}
-
-
-/* =========================
-   LOAD NOTES
-========================= */
-
-function loadNotes(){
-
-    const notes =
-        JSON.parse(
-            localStorage.getItem("notes") || "[]"
-        );
-
-
-    const box =
-        document.getElementById("latestNotes");
-
-
-    box.innerHTML = "";
-
-
-    if(notes.length === 0){
-
-        box.innerHTML =
-            '<div class="empty">Abhi koi note upload nahi hua.</div>';
-
-    }
-
-
-    notes
-        .slice()
-        .reverse()
-        .forEach(function(note){
-
-            box.innerHTML += noteHTML(note);
-
-        });
-
-
-    updateCounts();
-
-}
-
-
-/* =========================
-   NOTE HTML
-========================= */
-
-function noteHTML(note){
-
-    return `
-
-        <div class="note">
-
-            <h3>
-                ${safe(note.name)}
-            </h3>
-
-            <div class="subject-name">
-                ${safe(note.subject)}
-            </div>
-
-            <small>
-                File: ${safe(note.fileName)}
-            </small>
-
-            <button
-                class="view"
-                onclick="viewNote(${note.id})"
-            >
-                View Note
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================
-   UPDATE COUNTS
-========================= */
-
-function updateCounts(){
-
-    const notes =
-        JSON.parse(
-            localStorage.getItem("notes") || "[]"
-        );
-
-
-    const subjects = {
-
-        Mathematics:"mathCount",
-
-        Chemistry:"chemCount",
-
-        Electronic:"electronicCount",
-
-        Mechanical:"mechanicalCount",
-
-        EVS:"evsCount"
-
-    };
-
-
-    Object.keys(subjects).forEach(function(subject){
-
-        const count =
-            notes.filter(
-                note =>
-                note.subject === subject
-            ).length;
-
-
-        document.getElementById(
-            subjects[subject]
-        ).innerText =
-            count + " Notes";
-
-    });
-
-}
-
-
-/* =========================
-   SUBJECT PAGE
-========================= */
-
-function openSubject(subject){
-
-    document.getElementById("homePage").style.display =
-        "none";
-
-
-    document.getElementById("subjectPage").style.display =
-        "block";
-
-
-    document.getElementById("selectedSubject").innerText =
-        subject + " Notes";
-
-
-    const notes =
-        JSON.parse(
-            localStorage.getItem("notes") || "[]"
-        );
-
-
-    const filtered =
-        notes.filter(
-            note =>
-            note.subject === subject
-        );
-
-
-    const box =
-        document.getElementById("subjectNotes");
-
-
-    box.innerHTML = "";
-
-
-    if(filtered.length === 0){
-
-        box.innerHTML =
-            '<div class="empty">Is subject mein abhi koi notes nahi hain.</div>';
-
-        return;
-
-    }
-
-
-    filtered
-        .slice()
-        .reverse()
-        .forEach(function(note){
-
-            box.innerHTML += noteHTML(note);
-
-        });
-
-}
-
-
-/* =========================
-   VIEW NOTE
-========================= */
-
-function viewNote(id){
-
-    const notes =
-        JSON.parse(
-            localStorage.getItem("notes") || "[]"
-        );
-
-
-    const note =
-        notes.find(
-            n =>
-            n.id === id
-        );
-
-
-    if(!note){
-
-        alert("File nahi mili.");
-
-        return;
-
-    }
-
-
-    const win =
-        window.open();
-
-
-    if(note.fileType === "application/pdf"){
-
-        win.document.write(`
-
-            <iframe
-                src="${note.fileData}"
-                style="
-                    width:100%;
-                    height:100vh;
-                    border:0;
-                "
-            ></iframe>
-
-        `);
-
-    }
-
-    else{
-
-        win.document.write(`
-
-            <img
-                src="${note.fileData}"
-                style="
-                    max-width:100%;
-                    max-height:100vh;
-                    display:block;
-                    margin:auto;
-                "
-            >
-
-        `);
-
-    }
-
-}
-
-
-/* =========================
-   HOME
-========================= */
-
-function home(){
-
-    document.getElementById("subjectPage").style.display =
-        "none";
-
-
-    document.getElementById("homePage").style.display =
-        "block";
-
-
-    loadNotes();
-
-}
-
-
-/* =========================
-   SCROLL
-========================= */
-
-function scrollSubjects(){
-
-    document
-        .getElementById("subjectHeading")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-}
-
-
-/* =========================
-   SECURITY
-========================= */
-
-function safe(text){
-
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;");
-
-}
-
-</script>
-
+<script type="module" src="script.js"></script>
 </body>
 </html>
